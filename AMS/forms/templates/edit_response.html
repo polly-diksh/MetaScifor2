@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Response</title>
+</head>
+<body>
+    <h1>Edit Response for "{{ form_instance.title }}"</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for question in form_instance.questions.all %}
+            <div>
+                <label>{{ question.question_text }}</label><br>
+                {% with question_id=question.id %}
+                    {% if question.question_type == 'short_answer' %}
+                        <input type="text" name="question_{{ question_id }}" value="{{ initial_data.question_id.answer_text }}">
+                    {% elif question.question_type == 'paragraph' %}
+                        <textarea name="question_{{ question_id }}">{{ initial_data.question_id.answer_text }}</textarea>
+                    {% elif question.question_type == 'multiple_choice' %}
+                        {% for choice in question.options.all %}
+                            <input type="radio" name="question_{{ question_id }}" value="{{ choice.choice_text }}" {% if initial_data.question_id.answer_text == choice.choice_text %}checked{% endif %}> {{ choice.choice_text }}<br>
+                        {% endfor %}
+                    {% elif question.question_type == 'checkbox' %}
+                        {% for choice in question.options.all %}
+                            <input type="checkbox" name="question_{{ question_id }}" value="{{ choice.choice_text }}" {% if choice.choice_text in initial_data.question_id.answer_text %}checked{% endif %}> {{ choice.choice_text }}<br>
+                        {% endfor %}
+                    {% elif question.question_type == 'dropdown' %}
+                        <select name="question_{{ question_id }}">
+                            {% for choice in question.options.all %}
+                                <option value="{{ choice.choice_text }}" {% if initial_data.question_id.answer_text == choice.choice_text %}selected{% endif %}>{{ choice.choice_text }}</option>
+                            {% endfor %}
+                        </select>
+                    {% elif question.question_type == 'file_upload' %}
+                        <input type="file" name="question_{{ question_id }}">
+                        {% if initial_data.question_id.file_upload %}
+                            <p>Current file: <a href="{{ initial_data.question_id.file_upload }}" download>Download</a></p>
+                        {% endif %}
+                    {% elif question.question_type == 'date' %}
+                        <input type="date" name="question_{{ question_id }}" value="{{ initial_data.question_id.answer_text }}">
+                    {% elif question.question_type == 'time' %}
+                        <input type="time" name="question_{{ question_id }}" value="{{ initial_data.question_id.answer_text }}">
+                    {% endif %}
+                {% endwith %}
+            </div>
+        {% endfor %}
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('Are you sure you want to delete this response?');">Delete Response</button>
+    </form>
+
+    <a href="{% url 'list_forms' %}">Back to Form Details</a>
+</body>
+</html>

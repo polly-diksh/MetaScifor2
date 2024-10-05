@@ -1,0 +1,96 @@
+{%extends "base.html" %}
+
+{% block title %}
+	Player Detail
+{% endblock %}
+
+{% block content %}
+<table class="table">
+	<tr>
+		<th>Firstname:</th>
+		<td>{{ player.firstname }}</td>
+	</tr>
+
+	<tr>
+		<th>Lastname:</th>
+		<td>{{ player.lastname }}</td>
+	</tr>
+
+	<tr>
+		<th>Nationality:</th>
+		<td>{{ player.nationality }}</td>
+	</tr>
+
+	<tr>
+		<th>Date of Birth:</th>
+		<td>{{ player.dateofbirth }}</td>
+	</tr>
+
+	<tr>
+		<th>Gender:</th>
+		<td>{{ player.gender }}</td>
+	</tr>
+
+	<tr>
+		<th>Email Id:</th>
+		<td>{{ player.emailid }}</td>
+	</tr>
+
+	<tr>
+		<th>Mobile No:</th>
+		<td>{{ player.mobile }}</td>
+	</tr>
+
+	<tr>
+		<th>Team:</th>
+		<td>{{ player.team.title }}</td>
+	</tr>
+
+	<tr>
+		<th>Position:</th>
+		<td>{{ player.position }}</td>
+	</tr>
+
+	<tr>
+		<th>Role:</th>
+		<td>{{ player.role }}</td>
+	</tr>
+
+	<tr>
+		<th>Handiness:</th>
+		<td>{{ player.handiness }}</td>
+	</tr>
+
+	<tr>
+		<th>Guardian Name:</th>
+		<td>{{ player.guardian_name }}</td>
+	</tr>
+
+	<tr>
+		<th>Relationship with guardian:</th>
+		<td>{{ player.relation }}</td>
+	</tr>
+
+	<tr>
+		<th>Guardian contact:</th>
+		<td>{{ player.guardiancontact }}</td>
+	</tr>
+
+	<tr>
+		<th>Disease:</th>
+		<td>{{ player.disease }}</td>
+	</tr>
+
+	<tr>
+		<th>Allergies:</th>
+		<td>{{ player.allergies }}</td>
+	</tr>
+
+	<tr>
+		<th>Additional Information:</th>
+		<td>{{ player.additional_information }}</td>
+	</tr>
+</table>
+
+<a href="{% url 'details' %}" class="btn btn-info">Back</a>
+{% endblock %}

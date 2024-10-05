@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to the Player Management System</h1>
+    <p class="lead">This is a simple web application to manage player details.</p>
+    <hr class="my-4">
+    <p>Use the navigation bar to add new players or view player details.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'add_player' %}" role="button">Add New Player</a>
+    <a class="btn btn-secondary btn-lg" href="{% url 'details' %}" role="button">View Player Details</a>
+    <a class="btn btn-secondary btn-lg" href="{% url 'create_form' %}" role="button">Create Form</a>
+    <a href="{% url 'list_forms' %}" role="button">All Forms</a>
+</div>
+{% endblock %}
