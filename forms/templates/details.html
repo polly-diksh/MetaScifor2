@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Player Details
+{% endblock %}
+
+{% block content %}
+
+<h2>Player Details</h2>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>Nationality</th>
+			<th>DOB</th>
+			<th>Gender</th>
+			<th>Email Id</th>
+			<th>Mobile No</th>
+			<th>Team</th>
+			<th>Position</th>
+			<th>More Info</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for player in players %}
+			<tr>
+				<td>{{ player.firstname }}</td>
+				<td>{{ player.lastname}}</td>
+				<td>{{ player.nationality }}</td>
+				<td>{{ player.dateofbirth }}</td>
+				<td>{{ player.gender }}</td>
+				<td>{{ player.mobile }}</td>
+				<td>{{ player.team.title }}</td>
+				<td>{{ player.position }}</td>
+				<td><a href="{% url 'player_detail' player.id %}"></a>View</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% endblock %}
