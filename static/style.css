@@ -1,0 +1,65 @@
+.mb-3{
+    margin-top:3%;
+    font-size: 18px;
+} 
+.input{
+    height:200px;
+    display:flex;
+    margin-left:3%;
+    margin-right:2%;
+}
+.left{
+    display:block;
+    flex-basis:27%;
+    margin-right:3%;
+    margin-left:2%;
+}
+.middle{
+    display:block;
+    flex-basis:27%;
+    margin-right:2%;
+    margin-left:2%;
+}
+.right{
+    display:block;
+    flex-basis:27%;
+    margin-right:2%;
+    margin-left:3%;
+}
+.form-label{
+    width:150px;
+    height:60px;
+    text-align: center;
+}
+.form-control{
+    width:250px;
+    height:50px;
+}
+.btn{
+    background-color: rgb(132, 215, 211);
+    height:50px;
+    width:120px;
+    margin-top: 4%;
+    border-style: none;
+    font-size: 16px;
+    color: ghostwhite;
+}
+.info h3{
+    margin-left:3%;
+
+}
+.radiofield{
+    display:flex;
+}
+.radio-1{
+    display:block;
+    flex-basis: 20%;
+}
+.radio-2{
+    display:block;
+    flex-basis: 20%;
+}
+.radio-3{
+    display:block;
+    flex-basis: 20%;
+}
